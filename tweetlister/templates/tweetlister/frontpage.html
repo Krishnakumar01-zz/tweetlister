@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Tweet lister</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $("#div1").load("{% url 'frontpage' %}");
+                });
+            });
+        </script>
+        <style>
+        footer{
+            width:97.5%;
+            margin-left:0.5cm;
+            margin-top:2cm;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+     <div class="jumbotron">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="pagination pagination-lg">
+                            <li><a href="#">#</a></li>
+                            <li><a href="#">T</a></li>
+                            <li><a href="#">w</a></li>
+                            <li><a href="#">e</a></li>
+                            <li><a href="#">e</a></li>
+                            <li><a href="#">t</a></li>
+                        </ul>
+                        <ul class="pagination pagination">
+                            <li><a href="#">#</a></li>
+                            <li><a href="#">L</a></li>
+                            <li><a href="#">i</a></li>
+                            <li><a href="#">s</a></li>
+                            <li><a href="#">t</a></li>
+                            <li><a href="#">e</a></li>
+                            <li><a href="#">r</a></li>
+                        </ul> 
+                </div> 
+            </div>
+        </div>
+        </div>  
+        <div class="container-fluid">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-5 panel panel-default">
+            <br>
+            <br>
+            <div class="panel-heading">
+            <h3 style="margin-left: 2cm"><b>Tweet listing done here.......</b></h3>
+            </div>
+            <div class="panel-body">
+            <form method='POST' style="margin-left: 3cm">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" style="margin-left: 1.75cm" class="btn btn-default">Get Tweets</button>
+            </form>
+        </div>
+            <div id="div1">
+                {% for i in res %}
+                <div class="well well-sm">
+                <br>
+                    {{ i }}
+                    <br>
+                </div>
+                {% endfor %}
+            </div>
+      </div>  
+  </div>
+    </body>
+    <footer>
+        <div class="footer well well-sm">
+        <h6><b>Copyright &copy; 2018 | Developed using HTML,Bootstrap and Django </b></h6>
+        </div>
+    </footer>
+</html>
